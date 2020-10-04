@@ -48,7 +48,7 @@ class CliSeeder {
     const collectionReadingConfig = this.getCollectionReadingConfig(options);
 
     try {
-      const collections = seeder.readCollectionsFromPath(
+      const collections = await seeder.readCollectionsFromPath(
         resolve(collectionsPath),
         collectionReadingConfig,
       );

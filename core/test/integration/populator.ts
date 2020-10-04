@@ -10,7 +10,7 @@ interface ExpectedDocuments {
 }
 
 describe('CollectionPopulator', () => {
-  it('should populate documents correctly', () => {
+  it('should populate documents correctly', async () => {
     const expectedDocuments: ExpectedDocuments = {
       array: [
         {
@@ -47,6 +47,10 @@ describe('CollectionPopulator', () => {
           number: 8,
           name: 'eight',
         },
+        {
+          number: 9,
+          name: 'nine',
+        },
       ],
     };
 
@@ -57,7 +61,7 @@ describe('CollectionPopulator', () => {
       const path = `${IMPORT_DATA_DIR}/populator-docs/${key}`;
 
       // @ts-ignore
-      const documents = collectionPopulator.populateDocumentsContent(path);
+      const documents = await collectionPopulator.populateDocumentsContent(path);
 
       expectedDocuments[key].forEach(expectedDocument => {
         expect(documents).toContainEqual(

@@ -103,7 +103,7 @@ describe('FileSystem', () => {
     expect(ignoreHiddenFileWithNoExtension).toBeTruthy();
   });
 
-  it('should get documents content array from array of file names', () => {
+  it('should get documents content array from array of file names', async () => {
     const documentFilePaths = [
       'mockFiles/test1.json',
       'mockFiles/test2.js',
@@ -123,7 +123,7 @@ describe('FileSystem', () => {
       },
     ];
 
-    const actualContentArray = fileSystem.readFilesContent(documentFilePaths);
+    const actualContentArray = await fileSystem.readFilesContent(documentFilePaths);
 
     expect(actualContentArray).toEqual(expectedContentArray);
   });
